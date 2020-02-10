@@ -14,10 +14,36 @@ var app = angular.module('kitModule', [])
             $http.post('/kit/add', kit).then(
                 (response) => {
                     $window.alert('Record added');
-                },
-                (response) => {});
-
+                    list();
+                });
         };
+
+        $scope.update = (kit) => {
+
+            const conf = $window.confirm('Modify record ' + kit.description + '?')
+
+            if(conf){
+
+                $http.delete('/kit/update/' + kit.id, kit).then((response) => {
+                    list();
+                });
+
+            };
+        };
+
+        $scope.remove = (kit) => {
+
+            const conf = $window.confirm('Remove record ' + kit.description + '?')
+
+            if(conf){
+
+                $http.delete('/kit/remove/' + kit.id).then((response) => {
+                    list();
+                });
+
+            };
+        };
+
 
         function list(){
 
@@ -28,7 +54,7 @@ var app = angular.module('kitModule', [])
 
                 },
                 (response) => {
-
+                    $window.alert('Not information yet!');
                 });
 
         }
