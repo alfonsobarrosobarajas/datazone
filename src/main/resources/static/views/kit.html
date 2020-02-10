@@ -15,7 +15,11 @@
 
 
     <script>
-        $('#myModal').on('shown.bs.modal', function () {
+        $('#saveModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+
+        $('#updateModal').on('shown.bs.modal', function () {
             $('#myInput').trigger('focus')
         })
     </script>
@@ -28,7 +32,7 @@
         <h1>Kit</h1>
 
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#saveModal">
             Add
         </button>
 
@@ -44,7 +48,7 @@
                 <td>{{kit.code}}</td>
                 <td>{{kit.description}}</td>
                 <td>
-                    <button ng-click="" class="btn btn-warning">Modify</button>
+                    <button ng-click="" class="btn btn-warning" data-target="#updateModal">Modify</button>
                     <button ng-click="remove(kit)" class="btn btn-danger">Remove</button>
                 </td>
             </tr>
@@ -54,13 +58,12 @@
 
     </div>
 
-
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+                    <h5 class="modal-title" id="saveModalLabel">Add</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -89,6 +92,8 @@
             </div>
         </div>
     </div>
+
+
 
 </body>
 
